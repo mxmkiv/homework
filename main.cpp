@@ -3,23 +3,32 @@ using namespace std;
 
 int main(){
 
-    int matrix[4][4] = {
-        {4,1,1,1},
-        {1,4,1,1},
-        {1,1,4,1},
-        {1,1,1,4}
-    };
-    int m_size = 4;
+    int rows, columns;
+    cout << "n (matrix size): ";
+    cin >> rows;
+
+    int** matrix{new int*[rows]};
+
+    for (int p = 0; p < rows; p++){
+        matrix[p] = new int[rows];
+    }
+
+    for (int i = 0; i < rows; i++){
+        cout << i + 1 << " row: ";
+        for (int j = 0; j < rows; j++){
+            cin >> matrix[i][j];
+        }
+    }
 
     int main_summ = 0, side_summ = 0;
 
-    for (int i = 0; i < 4; i++){
+    for (int i = 0; i < rows; i++){
         main_summ += matrix[i][i];
     }
 
-    for (int k = 0; k < 4; k++){
+    for (int k = 0; k < rows; k++){
         for (int j = 3; j > -1; j--){
-            if (k + j == m_size - 1){
+            if (k + j == rows - 1){
                 side_summ += matrix[k][j];
             }
         }
@@ -37,14 +46,6 @@ int main(){
         cout << "sum same" << endl;
         cout << main_summ << " = " << side_summ << endl;
     }
-
-    
-    /*for (int i = 0; i < 4; i++){
-        cout << endl;
-        for (int j = 0; j < 4; j++){
-            cout << matrix[i][j] << " ";
-        }
-    }*/
 
     return 0;
 }
