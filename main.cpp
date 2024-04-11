@@ -47,5 +47,12 @@ int main(){
         cout << main_summ << " = " << side_summ << endl;
     }
 
+	//memory clear
+	for (int i = 0; i < rows; i++) {
+		delete[] matrix[i];
+	}
+
+	delete[] matrix;
+
     return 0;
 }
